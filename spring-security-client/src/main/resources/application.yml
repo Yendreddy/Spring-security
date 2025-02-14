@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/xepdb1
+    username: DurgaYendreddy
+    password: Durga171004
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.OracleDialect
+  security:
+    oauth2:
+      resource server:
+        jwt:
+          issuer-uri: http://localhost:9000
+      client:
+        registration:
+          api-client-oidc:
+            provider: spring
+            client-id: api-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: api-client-oidc
+          api-client-authorization-code:
+            provider: spring
+            client-id: api-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://l127.0.0.1:8080/authorized"
+            scope: api.read
+            client-name: api-client-authorization-code
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000

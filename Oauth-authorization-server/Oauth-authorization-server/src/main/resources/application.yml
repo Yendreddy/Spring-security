@@ -1,0 +1,12 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/xepdb1
+    username: DurgaYendreddy
+    password: Durga171004
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    show-sql: true
+
+
